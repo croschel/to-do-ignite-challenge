@@ -1,0 +1,9 @@
+@import '../../styles/variables.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $gray700;
+  min-height: 200px;
+}
