@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 * {
   margin: 0;
   padding: 0;
@@ -19,4 +21,9 @@ button {
 
 button {
   cursor: pointer;
+}
+
+:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 2px $purple;
 }
