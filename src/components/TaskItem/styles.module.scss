@@ -1,0 +1,56 @@
+@import "../../styles/variables.scss";
+
+.taskItemContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 72px;
+  background-color: $gray500;
+  border: 1px solid $gray400;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 16px;
+  justify-content: space-between;
+
+  .checkboxTask {
+    display: flex;
+    justify-content: flex-start;
+
+    & > img {
+      width: 24px;
+      height: 24px;
+      margin-right: 12px;
+    }
+
+    .checkBoxInput {
+      display: flex;
+      margin-right: 12px;
+      min-width: 24px;
+      height: 24px;
+      border: 1px solid $blueDark;
+      border-radius: 50%;
+      &:hover {
+        border: 1px solid $blue;
+      }
+    }
+
+    & > span {
+      color: $gray100;
+      font-size: 14px;
+    }
+  }
+  .removeButton {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    border-radius: 4px;
+    align-self: flex-start;
+    &:hover {
+      background-color: $gray400;
+      & > img {
+        filter: invert(55%) sepia(100%) saturate(3638%) hue-rotate(332deg)
+          brightness(104%) contrast(78%);
+      }
+    }
+  }
+}

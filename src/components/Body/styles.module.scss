@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .mainContainer {
   display: flex;
@@ -33,8 +33,9 @@
         border-radius: 8px;
         border: none;
         transition: background-color 0.2s;
-        &:hover, &:focus {
-          background-color: darken($blueDark, 10%);
+        &:hover,
+        &:focus {
+          background-color: lighten($blueDark, 10%);
         }
         & > p {
           color: white;
@@ -81,6 +82,13 @@
           color: $purple;
         }
       }
+    }
+    .taskListBox {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      margin-top: 16px;
     }
   }
   .emptyTaskBox {
