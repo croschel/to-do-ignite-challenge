@@ -37,6 +37,17 @@
         &:focus {
           background-color: lighten($blueDark, 10%);
         }
+        &:disabled {
+          background-color: darken($blueDark, 20%);
+          cursor: default;
+          & > p {
+            opacity: 0.4;
+          }
+          & > img {
+            filter: invert(0%) sepia(0%) saturate(7491%) hue-rotate(8deg)
+              brightness(100%) contrast(1%);
+          }
+        }
         & > p {
           color: white;
         }
@@ -67,7 +78,7 @@
         background-color: $gray400;
         padding: 2px 8px;
         border-radius: 999px;
-        width: 24px;
+        min-width: 24px;
         height: 19px;
       }
       .leftContent {

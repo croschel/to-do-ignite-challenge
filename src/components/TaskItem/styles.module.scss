@@ -38,6 +38,11 @@
       color: $gray100;
       font-size: 14px;
     }
+
+    .descriptionTaskDone {
+      text-decoration: line-through;
+      color: $gray300;
+    }
   }
   .removeButton {
     background-color: transparent;

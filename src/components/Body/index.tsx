@@ -1,34 +1,28 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { Task } from "../../@types/task";
 import clipboard from "../../assets/clipboard.svg";
 import plus from "../../assets/plus.svg";
 import { TaskItem } from "../TaskItem";
 import styles from "./styles.module.scss";
 
-const mock: Task[] = [
-  {
-    id: "1",
-    description: "Some description for test this...",
-    isDone: false,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: "2",
-    description:
-      "Some description for test this 2... addasdsadasdasdadadadas adasd asdaasd asd asd asdadadadsdasda",
-    isDone: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-];
-
 export const Body: React.FC = () => {
-  const [taskList, setTaskList] = useState<Task[]>(mock);
+  const [taskList, setTaskList] = useState<Task[]>([]);
   const [newTask, setNewTask] = useState("");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setTaskList([
+      ...taskList,
+      {
+        id: uuidv4(),
+        description: newTask,
+        createdAt: new Date(),
+        isDone: false,
+        updatedAt: new Date(),
+      },
+    ]);
+    setNewTask("");
   };
 
   const handleDeleteTask = (taskItem: Task) => {
@@ -49,6 +43,14 @@ export const Body: React.FC = () => {
     setTaskList(updatedTaskList);
   };
 
+  const handleTaskCounter = () => {
+    if (taskList.length === 0) {
+      return 0;
+    }
+    const closedTasks = taskList.filter((task) => task.isDone === true);
+    return `${closedTasks.length} de ${taskList.length}`;
+  };
+
   return (
     <main className={styles.mainContainer}>
       <div className={styles.taskBarContainer}>
@@ -59,7 +61,7 @@ export const Body: React.FC = () => {
             value={newTask}
             onChange={(event) => setNewTask(event.target.value)}
           />
-          <button type="submit">
+          <button type="submit" disabled={newTask.length === 0}>
             <p>Criar</p>
             <img src={plus} alt="plus" />
           </button>
@@ -70,12 +72,12 @@ export const Body: React.FC = () => {
           {/* Left Counter */}
           <div className={styles.leftContent}>
             <p>Tarefas Criadas</p>
-            <div className={styles.counter}>0</div>
+            <div className={styles.counter}>{taskList.length}</div>
           </div>
           {/* Right Counter */}
           <div className={styles.rightContent}>
             <p>Concluídas</p>
-            <div className={styles.counter}>0</div>
+            <div className={styles.counter}>{handleTaskCounter()}</div>
           </div>
         </div>
         {taskList.length === 0 ? (

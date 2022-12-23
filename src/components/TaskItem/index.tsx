@@ -23,7 +23,9 @@ export const TaskItem = ({ task, onDelete, onClose }: Props) => {
         ) : (
           <div className={styles.checkBoxInput} onClick={() => onClose(task)} />
         )}
-        <span>{task.description}</span>
+        <span className={task.isDone ? styles.descriptionTaskDone : ""}>
+          {task.description}
+        </span>
       </div>
       <button onClick={() => onDelete(task)} className={styles.removeButton}>
         <img src={trash} alt="remove task icon" />
