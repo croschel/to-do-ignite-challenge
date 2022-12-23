@@ -90,6 +90,7 @@ export const Body: React.FC = () => {
           <div className={styles.taskListBox}>
             {taskList.map((task) => (
               <TaskItem
+                key={task.id}
                 task={task}
                 onDelete={handleDeleteTask}
                 onClose={handleCloseTask}
